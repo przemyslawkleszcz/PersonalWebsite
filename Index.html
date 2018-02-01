@@ -1,23 +1,29 @@
 ﻿<!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" ng-app="PersonalWebsite">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My website</title>
-    <!--<meta name="description" content="A set of morphing shape overlays with SVG" />
-    <meta name="keywords" content="shape, SVG, morphing, web development, web design, javascript" />
-    <meta name="author" content="Codrops" />-->
-
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/controllers/indexController.js"></script>
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/controllers/home1Controller.js"></script>
+
     <script>document.documentElement.className = 'js';</script>
 </head>
-<body class="demo-3">
-    <main class="main main--demo-3">
-        <div class="content content--demo-3">
-            <div class="hamburger hamburger--demo-3 js-hover">
+<body class="demo-3" ng-controller="indexController as indCtrl">
+    <main>
+        <div class="content">
+            <div class="hamburger">
                 <div class="hamburger__line hamburger__line--01">
                     <div class="hamburger__line-in hamburger__line-in--01"></div>
                 </div>
@@ -34,13 +40,14 @@
                     <div class="hamburger__line-in hamburger__line-in--cross02"></div>
                 </div>
             </div>
-            <div class="demo-title demo-title--demo-3">Artificial Intelligence</div>
+            <div class="demo-title">
+                <div ng-view="">
+                </div>
+            </div>
             <div class="global-menu">
-                <div class="global-menu__wrap">
-                    <a class="global-menu__item global-menu__item--demo-3" href="#">Home</a>
-                    <a class="global-menu__item global-menu__item--demo-3" href="#">Introduction</a>
-                    <a class="global-menu__item global-menu__item--demo-3" href="#">Learning</a>
-                    <a class="global-menu__item global-menu__item--demo-3" href="#">Resources</a>
+                <div>
+                    <a class="global-menu__item global-menu__item--demo-3" ng-href="#/home" onclick="toggle();">Home</a>
+                    <a class="global-menu__item global-menu__item--demo-3" ng-href="#/home1" onclick="toggle();">Introduction</a>
                 </div>
             </div>
             <svg class="shape-overlays" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -50,6 +57,11 @@
             </svg>
         </div>
     </main>
+    <script>
+        function toggle() {
+            $(".hamburger").click();
+        }
+    </script>
     <script src="js/demo.js"></script>
     <script src="js/easings.js"></script>
     <script src="js/demo3.js"></script>
